@@ -430,8 +430,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       }, {
         id: 3,
         title: 'Meeting with boss'
-      }] // datas : [this.props.data]
-
+      }]
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "delTodos", id => {
@@ -449,10 +448,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       };
       this.setState({
         todos: [...this.state.todos, newTodo]
-      }); // console.log("newTodo: ",newTodo)
-      // console.log("datas: ",this.state.datas)
-      // this.setState({ datas : [...this.state.datas,newTodo]})
-      // console.log("DATAS : ",this.state.datas)
+      });
     });
   }
 
@@ -462,32 +458,32 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 53
+        lineNumber: 47
       },
       __self: this
     }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54
+        lineNumber: 48
       },
       __self: this
     }, __jsx("title", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 55
+        lineNumber: 49
       },
       __self: this
     }, "Todo")), __jsx(_components_Navbar_Navbar__WEBPACK_IMPORTED_MODULE_3__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 57
+        lineNumber: 51
       },
       __self: this
     }), __jsx(_components_AddTodo_AddTodo__WEBPACK_IMPORTED_MODULE_5__["default"], {
       addTodo: this.addTodo,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 58
+        lineNumber: 52
       },
       __self: this
     }), __jsx(_components_ShowTodo_ShowTodo__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -496,7 +492,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       data: this.props.data,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 53
       },
       __self: this
     }));

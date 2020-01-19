@@ -23,7 +23,6 @@ class Index extends Component {
         title:'Meeting with boss',
       }
     ],
-    // datas : [this.props.data]
   };
 
     delTodos = (id) => {
@@ -38,11 +37,6 @@ class Index extends Component {
         title:title,
       }
       this.setState({ todos : [...this.state.todos, newTodo]})
-      // console.log("newTodo: ",newTodo)
-      // console.log("datas: ",this.state.datas)
-      // this.setState({ datas : [...this.state.datas,newTodo]})
-      // console.log("DATAS : ",this.state.datas)
-
     }
 
   render() {
@@ -66,7 +60,6 @@ class Index extends Component {
  Index.getInitialProps = async function(){
   const res = await fetch('http://localhost:5000/api/todos');
   const data = await res.json();
-
   return {
     data: data
   }

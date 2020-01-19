@@ -7074,8 +7074,7 @@ function (_Component) {
       }, {
         id: 3,
         title: 'Meeting with boss'
-      }] // datas : [this.props.data]
-
+      }]
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "delTodos", function (id) {
@@ -7097,11 +7096,7 @@ function (_Component) {
 
       _this.setState({
         todos: [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_this.state.todos), [newTodo])
-      }); // console.log("newTodo: ",newTodo)
-      // console.log("datas: ",this.state.datas)
-      // this.setState({ datas : [...this.state.datas,newTodo]})
-      // console.log("DATAS : ",this.state.datas)
-
+      });
     });
 
     return _this;
@@ -7115,32 +7110,32 @@ function (_Component) {
       return __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 47
         },
         __self: this
       }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_10___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 48
         },
         __self: this
       }, __jsx("title", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 49
         },
         __self: this
       }, "Todo")), __jsx(_components_Navbar_Navbar__WEBPACK_IMPORTED_MODULE_11__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 51
         },
         __self: this
       }), __jsx(_components_AddTodo_AddTodo__WEBPACK_IMPORTED_MODULE_13__["default"], {
         addTodo: this.addTodo,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 52
         },
         __self: this
       }), __jsx(_components_ShowTodo_ShowTodo__WEBPACK_IMPORTED_MODULE_12__["default"], {
@@ -7149,7 +7144,7 @@ function (_Component) {
         data: this.props.data,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59
+          lineNumber: 53
         },
         __self: this
       }));

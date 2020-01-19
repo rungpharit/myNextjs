@@ -38,7 +38,6 @@ app.post('/api/todos', async (req,res) => {
 //Delete Data
 app.delete('/api/todos/:id', async (req,res) => {
   const {id} = req.params;
-  console.log(id)
   await TodoList.findByIdAndDelete(id)
 
   res.json({msg:'dele'})
