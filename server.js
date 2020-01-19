@@ -1,45 +1,51 @@
 const express = require('express');
-const path = require('path');
-const uuid = require('uuid')
-
 const app = express(); 
+const path = require('path');
+const uuid = require('uuid');
+const mongoose = require('mongoose');
+const TodoList = require('./models/todos');
 
+//Connect mongoDB
+mongoose.connect('mongodb://localhost:27017/node-api', { useNewUrlParser: true })
+
+//Handle Error
+mongoose.connection.on('error', err => {
+  console.error('MongoDB error', err)
+})
+
+//Body Parser Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 
-const todos = [
-  {
-    id:4,
-    title:'Take',
-  },
-   {
-    id:5,
-    title:' wife',
-  },
-  {
-    id:6,
-    title:'Meeting ',
-  }
-]
-
-
+const todos = [{}]
 
 app.get('/', (req,res) => {
   res.send('<div>hello</div>');
 });
 
-app.get('/api/todos', (req,res) => {
-  res.json(todos);
+//Get Data
+app.get('/api/todos', async (req,res) => {
+  const todos = await TodoList.find({});
+  res.json(todos)
 });
 
-app.post('/api/todos', (req,res) => {
+//Insert Data
+app.post('/api/todos', async (req,res) => {
   const payload = req.body;
-  res.json(payload);
+  const todolist = new TodoList(payload);
+  await todolist.save()
+  res.status(201).end();
 });
 
-app.delete('/api/todos/:id', (req,res) => {
-  const {id} = req.param
-  res.json({id});
+//Delete Data
+app.delete('/api/todos/:id', async (req,res) => {
+  const {id} = req.params;
+  console.log(id)
+  await TodoList.findByIdAndDelete(id)
+
+  res.json({msg:'dele'})
+  res.status(204).end()
+ 
 })
 
 const PORT = process.env.PORT || 5000;
