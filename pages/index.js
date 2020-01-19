@@ -5,6 +5,12 @@ import ShowTodo from '../components/ShowTodo/ShowTodo';
 import AddTodo from '../components/AddTodo/AddTodo';
 import fetch from 'isomorphic-unfetch';
 
+import axios from 'axios';
+
+
+
+
+
 class Index extends Component {
   state = { 
     todos : [
@@ -20,7 +26,8 @@ class Index extends Component {
         id:3,
         title:'Meeting with boss',
       }
-    ]
+    ],
+    // datas : [this.props.data]
   };
 
     delTodos = (id) => {
@@ -29,17 +36,21 @@ class Index extends Component {
     }
 
     addTodo = (title) => {
+      console.log("add: ",title)
       const newTodo = {
         id:4,
         title:title,
       }
       this.setState({ todos : [...this.state.todos, newTodo]})
-      
+      // console.log("newTodo: ",newTodo)
+      // console.log("datas: ",this.state.datas)
+      // this.setState({ datas : [...this.state.datas,newTodo]})
+      // console.log("DATAS : ",this.state.datas)
+
     }
 
-   
   render() {
-    console.log(this.state.todos)
+    //console.log(this.state.todos)
     console.log(this.props)
     
     return (
@@ -49,7 +60,7 @@ class Index extends Component {
       </Head>
       <Navbar/>
       <AddTodo addTodo={this.addTodo}/>
-      <ShowTodo todos={this.state.todos} delTodos = {this.delTodos}/>
+      <ShowTodo todos={this.state.todos} delTodos = {this.delTodos} data = {this.props.data}/>
        
     </div>
     );
@@ -64,6 +75,10 @@ class Index extends Component {
     data: data
   }
 }
+
+
+
+
 const all ={
   padding : '0',
   margin : '0px',

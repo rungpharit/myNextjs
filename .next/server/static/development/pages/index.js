@@ -138,30 +138,36 @@ class AddTodo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21
+        lineNumber: 20
       },
       __self: this
     }, __jsx("form", {
       onSubmit: this.onSubmit,
+      style: {
+        display: 'flex',
+        marginBottom: '10px'
+      },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 21
       },
       __self: this
     }, __jsx("input", {
       type: "text",
       name: "title",
+      style: add,
       placeholder: "Add Todo ...",
       value: this.state.title,
       onChange: this.onChange,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 22
       },
       __self: this
     }), __jsx("input", {
       type: "submit",
       value: "Submit",
+      style: butt,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 30
@@ -172,6 +178,19 @@ class AddTodo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
 
 }
 
+const butt = {
+  flex: '1',
+  display: 'inline-block',
+  border: 'none',
+  background: '#555',
+  color: '#fff',
+  padding: '7px 20px',
+  cursor: 'pointer'
+};
+const add = {
+  flex: '10',
+  padding: '5px'
+};
 /* harmony default export */ __webpack_exports__["default"] = (AddTodo);
 
 /***/ }),
@@ -192,22 +211,26 @@ var _jsxFileName = "D:\\XAMPP\\htdocs\\learning\\nextjs\\nextjs_todo\\components
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const Navbar = () => __jsx("div", {
-  style: nav,
+  style: headerStyle,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 3
+  },
+  __self: undefined
+}, __jsx("h1", {
   __source: {
     fileName: _jsxFileName,
     lineNumber: 4
   },
   __self: undefined
-}, __jsx("p", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 5
-  },
-  __self: undefined
-}, "ToDo"));
+}, "TodoList"));
 
-const nav = {
-  margin: '0'
+const headerStyle = {
+  background: '#333',
+  color: '#fff',
+  textAlign: 'center',
+  padding: '10px',
+  border: 'none'
 };
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
 
@@ -232,14 +255,15 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 class ShowTodo extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   render() {
-    console.log("Show: ", this.props.todos);
+    //console.log("Show: ",this.props.todos)
+    console.log("Test: ", this.props.data);
     return this.props.todos.map(todo => __jsx(_TodoItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: todo.id,
       todoItem: todo,
       delTodo: this.props.delTodos,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 10
+        lineNumber: 11
       },
       __self: this
     }));
@@ -269,23 +293,28 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 class TodoItem extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   render() {
     const {
-      id,
+      _id,
       title
     } = this.props.todoItem;
     return __jsx("div", {
+      style: getStyle,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 7
       },
       __self: this
     }, __jsx("p", {
+      style: {
+        margin: '3px'
+      },
       __source: {
         fileName: _jsxFileName,
         lineNumber: 8
       },
       __self: this
     }, title, __jsx("button", {
-      onClick: this.props.delTodo.bind(this, id),
+      onClick: this.props.delTodo.bind(this, _id),
+      style: btnStyle,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 10
@@ -296,6 +325,20 @@ class TodoItem extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 }
 
+const btnStyle = {
+  background: '#ff0000',
+  color: '#fff',
+  border: 'none',
+  padding: '3px 5px',
+  borderRadius: '50%',
+  cursor: 'pointer',
+  float: 'right'
+};
+const getStyle = {
+  background: '#f4f4f4',
+  padding: '3px',
+  borderBottom: '1px #ccc dotted'
+};
 /* harmony default export */ __webpack_exports__["default"] = (TodoItem);
 
 /***/ }),
@@ -360,9 +403,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_AddTodo_AddTodo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/AddTodo/AddTodo */ "./components/AddTodo/AddTodo.js");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
 
 var _jsxFileName = "D:\\XAMPP\\htdocs\\learning\\nextjs\\nextjs_todo\\pages\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 
@@ -384,7 +430,8 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       }, {
         id: 3,
         title: 'Meeting with boss'
-      }]
+      }] // datas : [this.props.data]
+
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "delTodos", id => {
@@ -395,57 +442,62 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "addTodo", title => {
+      console.log("add: ", title);
       const newTodo = {
         id: 4,
         title: title
       };
       this.setState({
         todos: [...this.state.todos, newTodo]
-      });
+      }); // console.log("newTodo: ",newTodo)
+      // console.log("datas: ",this.state.datas)
+      // this.setState({ datas : [...this.state.datas,newTodo]})
+      // console.log("DATAS : ",this.state.datas)
     });
   }
 
   render() {
-    console.log(this.state.todos);
+    //console.log(this.state.todos)
     console.log(this.props);
     return __jsx("div", {
       style: all,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46
+        lineNumber: 57
       },
       __self: this
     }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47
+        lineNumber: 58
       },
       __self: this
     }, __jsx("title", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 59
       },
       __self: this
     }, "Todo")), __jsx(_components_Navbar_Navbar__WEBPACK_IMPORTED_MODULE_3__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 61
       },
       __self: this
     }), __jsx(_components_AddTodo_AddTodo__WEBPACK_IMPORTED_MODULE_5__["default"], {
       addTodo: this.addTodo,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 51
+        lineNumber: 62
       },
       __self: this
     }), __jsx(_components_ShowTodo_ShowTodo__WEBPACK_IMPORTED_MODULE_4__["default"], {
       todos: this.state.todos,
       delTodos: this.delTodos,
+      data: this.props.data,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 52
+        lineNumber: 63
       },
       __self: this
     }));
@@ -478,6 +530,17 @@ const all = {
 
 module.exports = __webpack_require__(/*! D:\XAMPP\htdocs\learning\nextjs\nextjs_todo\pages\index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
 
 /***/ }),
 

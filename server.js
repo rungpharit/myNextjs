@@ -1,7 +1,5 @@
 const express = require('express');
 const app = express(); 
-const path = require('path');
-const uuid = require('uuid');
 const mongoose = require('mongoose');
 const TodoList = require('./models/todos');
 
