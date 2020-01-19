@@ -138,7 +138,7 @@ class AddTodo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
+        lineNumber: 19
       },
       __self: this
     }, __jsx("form", {
@@ -149,7 +149,7 @@ class AddTodo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21
+        lineNumber: 20
       },
       __self: this
     }, __jsx("input", {
@@ -161,7 +161,7 @@ class AddTodo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       onChange: this.onChange,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 21
       },
       __self: this
     }), __jsx("input", {
@@ -170,7 +170,7 @@ class AddTodo extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       style: butt,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30
+        lineNumber: 29
       },
       __self: this
     })));
@@ -293,7 +293,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 class TodoItem extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   render() {
     const {
-      _id,
+      id,
       title
     } = this.props.todoItem;
     return __jsx("div", {
@@ -313,7 +313,7 @@ class TodoItem extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, title, __jsx("button", {
-      onClick: this.props.delTodo.bind(this, _id),
+      onClick: this.props.delTodo.bind(this, id),
       style: btnStyle,
       __source: {
         fileName: _jsxFileName,
@@ -460,35 +460,34 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     //console.log(this.state.todos)
     console.log(this.props);
     return __jsx("div", {
-      style: all,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 57
+        lineNumber: 53
       },
       __self: this
     }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 58
+        lineNumber: 54
       },
       __self: this
     }, __jsx("title", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 55
       },
       __self: this
     }, "Todo")), __jsx(_components_Navbar_Navbar__WEBPACK_IMPORTED_MODULE_3__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 61
+        lineNumber: 57
       },
       __self: this
     }), __jsx(_components_AddTodo_AddTodo__WEBPACK_IMPORTED_MODULE_5__["default"], {
       addTodo: this.addTodo,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 58
       },
       __self: this
     }), __jsx(_components_ShowTodo_ShowTodo__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -497,7 +496,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       data: this.props.data,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 63
+        lineNumber: 59
       },
       __self: this
     }));
@@ -513,10 +512,6 @@ Index.getInitialProps = async function () {
   };
 };
 
-const all = {
-  padding: '0',
-  margin: '0px'
-};
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
 /***/ }),

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 class TodoItem extends Component {
   render() { 
-    const {_id,title} = this.props.todoItem
+    const {id,title} = this.props.todoItem
     return ( 
       <div style ={getStyle}>
         <p style = {{ margin : '3px'}}>
           {title}
           <button 
-            onClick={this.props.delTodo.bind(this,_id)}
+            onClick={this.props.delTodo.bind(this,id)}
             style={btnStyle}>x
             </button>
         </p>

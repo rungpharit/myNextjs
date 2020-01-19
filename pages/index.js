@@ -7,10 +7,6 @@ import fetch from 'isomorphic-unfetch';
 
 import axios from 'axios';
 
-
-
-
-
 class Index extends Component {
   state = { 
     todos : [
@@ -54,7 +50,7 @@ class Index extends Component {
     console.log(this.props)
     
     return (
-      <div style={all}>
+      <div >
       <Head>
         <title>Todo</title>
       </Head>
@@ -74,15 +70,6 @@ class Index extends Component {
   return {
     data: data
   }
-}
-
-
-
-
-const all ={
-  padding : '0',
-  margin : '0px',
- 
 }
 
 export default Index;

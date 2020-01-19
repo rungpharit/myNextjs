@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class AddTodo extends Component {
   state = {
     title:''
-
   }
   onSubmit = (e) => {
     e.preventDefault();
