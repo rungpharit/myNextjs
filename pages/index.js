@@ -7,6 +7,7 @@ import fetch from 'isomorphic-unfetch';
 
 import axios from 'axios';
 
+
 class Index extends Component {
   state = { 
     todos : [
@@ -26,22 +27,32 @@ class Index extends Component {
   };
 
     delTodos = (id) => {
-      console.log("del: ",id);
-      this.setState({todos:[...this.state.todos.filter((todo) => todo.id !== id)]});
+      // console.log("del: ",id);
+      // this.setState({todos:[...this.state.todos.filter((todo) => todo.id !== id)]});
+
+      axios.delete('http://localhost:5000/api/todos/',{
+        id,
+      })
+      .then(console.log(id));
     }
 
     addTodo = (title) => {
-      console.log("add: ",title)
-      const newTodo = {
-        id:4,
-        title:title,
-      }
-      this.setState({ todos : [...this.state.todos, newTodo]})
+      // console.log("add: ",title)
+      // const newTodo = {
+      //   id:4,
+      //   title:title,
+      // }
+      // this.setState({ todos : [...this.state.todos, newTodo]})
+
+      axios.post('http://localhost:5000/api/todos/',{
+        title,
+      })
+      .then(console.log(title));
     }
 
   render() {
     //console.log(this.state.todos)
-    console.log(this.props)
+    console.log("from Db",this.props)
     
     return (
       <div >

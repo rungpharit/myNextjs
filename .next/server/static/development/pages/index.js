@@ -434,56 +434,58 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "delTodos", id => {
-      console.log("del: ", id);
-      this.setState({
-        todos: [...this.state.todos.filter(todo => todo.id !== id)]
-      });
+      // console.log("del: ",id);
+      // this.setState({todos:[...this.state.todos.filter((todo) => todo.id !== id)]});
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.delete('http://localhost:5000/api/todos/', {
+        id
+      }).then(console.log(id));
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "addTodo", title => {
-      console.log("add: ", title);
-      const newTodo = {
-        id: 4,
-        title: title
-      };
-      this.setState({
-        todos: [...this.state.todos, newTodo]
-      });
+      // console.log("add: ",title)
+      // const newTodo = {
+      //   id:4,
+      //   title:title,
+      // }
+      // this.setState({ todos : [...this.state.todos, newTodo]})
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.post('http://localhost:5000/api/todos/', {
+        title
+      }).then(console.log(title));
     });
   }
 
   render() {
     //console.log(this.state.todos)
-    console.log(this.props);
+    console.log("from Db", this.props);
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47
+        lineNumber: 58
       },
       __self: this
     }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 59
       },
       __self: this
     }, __jsx("title", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 60
       },
       __self: this
     }, "Todo")), __jsx(_components_Navbar_Navbar__WEBPACK_IMPORTED_MODULE_3__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 51
+        lineNumber: 62
       },
       __self: this
     }), __jsx(_components_AddTodo_AddTodo__WEBPACK_IMPORTED_MODULE_5__["default"], {
       addTodo: this.addTodo,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 52
+        lineNumber: 63
       },
       __self: this
     }), __jsx(_components_ShowTodo_ShowTodo__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -492,7 +494,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       data: this.props.data,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 53
+        lineNumber: 64
       },
       __self: this
     }));

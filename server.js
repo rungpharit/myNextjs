@@ -2,6 +2,7 @@ const express = require('express');
 const app = express(); 
 const mongoose = require('mongoose');
 const TodoList = require('./models/todos');
+const cors = require('cors');
 
 //Connect mongoDB
 mongoose.connect('mongodb://localhost:27017/node-api', { useNewUrlParser: true })
@@ -10,6 +11,9 @@ mongoose.connect('mongodb://localhost:27017/node-api', { useNewUrlParser: true }
 mongoose.connection.on('error', err => {
   console.error('MongoDB error', err)
 })
+
+// Allow cross-origin
+app.use(cors());
 
 //Body Parser Middleware
 app.use(express.json())
@@ -39,7 +43,6 @@ app.post('/api/todos', async (req,res) => {
 app.delete('/api/todos/:id', async (req,res) => {
   const {id} = req.params;
   await TodoList.findByIdAndDelete(id)
-
   res.json({msg:'dele'})
   res.status(204).end()
  
