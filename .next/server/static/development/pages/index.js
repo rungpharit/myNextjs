@@ -343,6 +343,196 @@ const getStyle = {
 
 /***/ }),
 
+/***/ "./components/picture/index.js":
+/*!*************************************!*\
+  !*** ./components/picture/index.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "D:\\XAMPP\\htdocs\\learning\\nextjs\\nextjs_todo\\components\\picture\\index.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+class Picture extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+    this.state = {
+      img: '',
+      img2: ''
+    };
+    this.submitpicture = this.submitpicture.bind(this);
+    this.getPicture = this.getPicture.bind(this);
+  }
+
+  submitpicture(e) {
+    e.preventDefault();
+    const fd = new FormData();
+    fd.append('image', e.target.someExpressFiles.files[0], e.target.someExpressFiles.files[0].name);
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.someExpressFiles.files[0]);
+
+    reader.onload = e => {
+      console.log('ee: ', e);
+      console.log('img: ', e.target.result);
+      console.log('img type: ', typeof e.target.result);
+      this.setState({
+        img: e.target.result
+      });
+    };
+
+    console.log('file: ', e.target.someExpressFiles.files[0]);
+    let image = e.target.someExpressFiles.files[0];
+    console.log('image: ', image);
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:5000/api/upload/', fd).then(response => {
+      console.log('res:', response);
+    });
+  }
+
+  componentDidMount() {}
+
+  async getPicture() {
+    console.log(`${this.state.img2}`);
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:5000/api/upload/').then(response => {
+      console.log('resdfdd:', response.data.img.data.data);
+      console.log('tetet: ', typeof response.data.img.data);
+      let buff = new Buffer(response.data.img.data.data);
+      console.log('tetet2: ', typeof buff);
+      let base64data = buff.toString('base64');
+      console.log('tetet: ', typeof base64data); //   let objJsonStr = JSON.stringify(response.data.img.data.data);
+      // let objJsonB64 = Buffer.from(objJsonStr).toString("base64");
+      // console.log('tetet: ',typeof(objJsonB64))
+
+      this.setState({
+        img2: base64data
+      });
+      console.log('img2: ', this.state.img2);
+    }); // console.log('yyy: ',this.state.img2)
+  }
+
+  render() {
+    console.log(`data:image/jpeg;base64,${this.state.img2}`);
+    return __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 71
+      },
+      __self: this
+    }, __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 72
+      },
+      __self: this
+    }, __jsx("button", {
+      name: "tt",
+      value: "test",
+      onClick: this.getPicture,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 73
+      },
+      __self: this
+    })), __jsx("h2", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 75
+      },
+      __self: this
+    }, "With ", __jsx("code", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 75
+      },
+      __self: this
+    }, "\"express\""), " npm package"), __jsx("form", {
+      onSubmit: this.submitpicture,
+      encType: "multipart/form-data",
+      method: "post",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 76
+      },
+      __self: this
+    }, __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 77
+      },
+      __self: this
+    }, "Text field title: ", __jsx("input", {
+      type: "text",
+      name: "title",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 77
+      },
+      __self: this
+    })), __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 78
+      },
+      __self: this
+    }, "File: ", __jsx("input", {
+      type: "file",
+      name: "someExpressFiles",
+      multiple: "multiple",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 78
+      },
+      __self: this
+    })), __jsx("input", {
+      type: "submit",
+      value: "Upload",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 79
+      },
+      __self: this
+    })), __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 81
+      },
+      __self: this
+    }, __jsx("img", {
+      src: `data:image/jpeg;base64,${this.state.img2}`,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 82
+      },
+      __self: this
+    })), __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 85
+      },
+      __self: this
+    }, __jsx("img", {
+      src: this.state.img,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 86
+      },
+      __self: this
+    })));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Picture);
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js ***!
@@ -403,11 +593,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_AddTodo_AddTodo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/AddTodo/AddTodo */ "./components/AddTodo/AddTodo.js");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "axios");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_picture__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/picture */ "./components/picture/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_8__);
 
 var _jsxFileName = "D:\\XAMPP\\htdocs\\learning\\nextjs\\nextjs_todo\\pages\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 
@@ -436,7 +628,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "delTodos", id => {
       // console.log("del: ",id);
       // this.setState({todos:[...this.state.todos.filter((todo) => todo.id !== id)]});
-      axios__WEBPACK_IMPORTED_MODULE_7___default.a.delete('http://localhost:5000/api/todos/', {
+      axios__WEBPACK_IMPORTED_MODULE_8___default.a.delete('http://localhost:5000/api/todos/', {
         id
       }).then(console.log(id));
     });
@@ -448,7 +640,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       //   title:title,
       // }
       // this.setState({ todos : [...this.state.todos, newTodo]})
-      axios__WEBPACK_IMPORTED_MODULE_7___default.a.post('http://localhost:5000/api/todos/', {
+      axios__WEBPACK_IMPORTED_MODULE_8___default.a.post('http://localhost:5000/api/todos/', {
         title
       }).then(console.log(title));
     });
@@ -460,32 +652,32 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 58
+        lineNumber: 60
       },
       __self: this
     }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 61
       },
       __self: this
     }, __jsx("title", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 60
+        lineNumber: 62
       },
       __self: this
     }, "Todo")), __jsx(_components_Navbar_Navbar__WEBPACK_IMPORTED_MODULE_3__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 64
       },
       __self: this
     }), __jsx(_components_AddTodo_AddTodo__WEBPACK_IMPORTED_MODULE_5__["default"], {
       addTodo: this.addTodo,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 63
+        lineNumber: 65
       },
       __self: this
     }), __jsx(_components_ShowTodo_ShowTodo__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -494,7 +686,13 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       data: this.props.data,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 64
+        lineNumber: 66
+      },
+      __self: this
+    }), __jsx(_components_picture__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 67
       },
       __self: this
     }));

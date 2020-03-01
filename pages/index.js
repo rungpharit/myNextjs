@@ -5,6 +5,8 @@ import ShowTodo from '../components/ShowTodo/ShowTodo';
 import AddTodo from '../components/AddTodo/AddTodo';
 import fetch from 'isomorphic-unfetch';
 
+import Picture from '../components/picture'
+
 import axios from 'axios';
 
 
@@ -62,12 +64,12 @@ class Index extends Component {
       <Navbar/>
       <AddTodo addTodo={this.addTodo}/>
       <ShowTodo todos={this.state.todos} delTodos = {this.delTodos} data = {this.props.data}/>
-       
+      <Picture/>
     </div>
     );
   }
-  
 }
+
  Index.getInitialProps = async function(){
   const res = await fetch('http://localhost:5000/api/todos');
   const data = await res.json();
